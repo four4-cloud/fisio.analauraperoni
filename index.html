@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ana Laura Peroni — Fisioterapia Esportiva, recovery e performance em Araraquara." />
+  <title>Ana Laura Peroni | Fisioterapia Esportiva</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#101411;
+      --muted:#667067;
+      --cream:#f5f4ef;
+      --paper:#fbfaf7;
+      --line:rgba(16,20,17,.12);
+      --accent:#8da06c;
+      --accent-dark:#52633b;
+      --white:#fff;
+      --radius:28px;
+      --shadow:0 24px 70px rgba(15,20,16,.12);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--paper);
+      color:var(--ink);
+      font-family:"DM Sans",sans-serif;
+      overflow-x:hidden;
+    }
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+
+    .grain{
+      position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:99;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    }
+
+    .nav{
+      position:fixed;top:18px;left:50%;transform:translateX(-50%);
+      width:min(1180px,calc(100% - 32px));z-index:50;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:13px 14px 13px 22px;border:1px solid rgba(255,255,255,.22);
+      border-radius:999px;background:rgba(18,22,17,.62);backdrop-filter:blur(18px);
+      color:#fff;
+    }
+    .brand{font-family:Manrope;font-weight:800;letter-spacing:-.04em}
+    .brand span{display:block;font-family:DM Sans;font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;margin-top:2px}
+    .navlinks{display:flex;gap:28px;font-size:13px;color:rgba(255,255,255,.75)}
+    .navlinks a{transition:.25s}.navlinks a:hover{color:#fff}
+    .navcta{padding:11px 17px;border-radius:999px;background:#fff;color:var(--ink);font-weight:700;font-size:12px}
+
+    .hero{
+      min-height:100svh;position:relative;display:flex;align-items:flex-end;
+      padding:150px 6vw 70px;color:#fff;overflow:hidden;
+      background:#171b17;
+    }
+    .hero-bg{position:absolute;inset:0}
+    .hero-bg img{object-position:56% 25%;filter:saturate(.84)}
+    .hero:after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(90deg,rgba(6,10,7,.78) 0%,rgba(6,10,7,.36) 48%,rgba(6,10,7,.1) 100%),
+                 linear-gradient(0deg,rgba(6,10,7,.68),transparent 48%);
+    }
+    .hero-content{position:relative;z-index:2;max-width:850px}
+    .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.22em;font-weight:700;opacity:.82;margin-bottom:24px}
+    h1{
+      font-family:Manrope;font-size:clamp(52px,8vw,112px);line-height:.88;
+      letter-spacing:-.075em;font-weight:800;max-width:800px;
+    }
+    .hero-copy{margin-top:30px;max-width:520px;font-size:17px;line-height:1.6;color:rgba(255,255,255,.8)}
+    .hero-actions{display:flex;gap:12px;align-items:center;margin-top:34px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:52px;padding:0 22px;border-radius:999px;border:1px solid transparent;
+      font-size:13px;font-weight:700;transition:transform .25s,background .25s;
+    }
+    .btn:hover{transform:translateY(-3px)}
+    .btn-light{background:#fff;color:var(--ink)}
+    .btn-ghost{border-color:rgba(255,255,255,.3);color:#fff;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+    .hero-scroll{position:absolute;right:6vw;bottom:70px;z-index:2;font-size:10px;letter-spacing:.2em;text-transform:uppercase;writing-mode:vertical-rl;opacity:.65}
+
+    section{padding:120px 6vw}
+    .wrap{max-width:1180px;margin:auto}
+    .section-label{font-size:10px;text-transform:uppercase;letter-spacing:.2em;font-weight:800;color:var(--accent-dark);margin-bottom:22px}
+    .intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:8vw;align-items:end}
+    .display{
+      font-family:Manrope;font-size:clamp(40px,5vw,72px);line-height:.98;letter-spacing:-.06em;font-weight:800;
+    }
+    .lead{font-size:17px;line-height:1.75;color:var(--muted);max-width:530px}
+    .quote{
+      margin-top:32px;padding:24px 0;border-top:1px solid var(--line);
+      font-family:Manrope;font-size:18px;font-weight:700;line-height:1.35;
+    }
+
+    .about{background:var(--cream)}
+    .about-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:7vw;align-items:center}
+    .portrait{
+      height:700px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+      transform:translateY(20px);
+    }
+    .about-copy .display{margin-bottom:26px}
+    .facts{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);margin-top:42px}
+    .fact{padding:22px 18px 20px 0;border-bottom:1px solid var(--line)}
+    .fact strong{display:block;font-family:Manrope;font-size:25px;letter-spacing:-.04em;margin-bottom:5px}
+    .fact span{font-size:12px;color:var(--muted)}
+
+    .services-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:46px}
+    .services-head .display{max-width:650px}
+    .services-note{max-width:290px;color:var(--muted);line-height:1.6;font-size:14px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{
+      position:relative;min-height:410px;border-radius:24px;overflow:hidden;background:#20251f;color:#fff;
+      isolation:isolate;cursor:default;
+    }
+    .card img{position:absolute;inset:0;z-index:-2;filter:saturate(.65);transition:transform .6s}
+    .card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(7,10,7,.9),rgba(7,10,7,.1) 75%)}
+    .card:hover img{transform:scale(1.06)}
+    .card-body{position:absolute;left:26px;right:26px;bottom:26px}
+    .number{font-size:11px;letter-spacing:.15em;opacity:.65}
+    .card h3{font-family:Manrope;font-size:29px;letter-spacing:-.045em;margin:9px 0 9px}
+    .card p{font-size:13px;line-height:1.55;color:rgba(255,255,255,.72)}
+
+    .marquee{
+      background:var(--ink);color:#fff;padding:25px 0;overflow:hidden;white-space:nowrap;
+    }
+    .marquee-track{display:inline-flex;gap:32px;animation:slide 22s linear infinite}
+    .marquee span{font-family:Manrope;font-size:clamp(20px,3vw,34px);font-weight:700;letter-spacing:-.04em}
+    .marquee i{font-style:normal;color:var(--accent);font-size:20px}
+    @keyframes slide{to{transform:translateX(-50%)}}
+
+    .method{background:#ecece5}
+    .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+    .tech-image{height:650px;border-radius:var(--radius);overflow:hidden;position:relative}
+    .tech-image img{object-position:58% center}
+    .floating-tag{
+      position:absolute;bottom:22px;left:22px;background:rgba(255,255,255,.9);
+      backdrop-filter:blur(12px);padding:15px 18px;border-radius:18px;font-size:11px;font-weight:800;
+    }
+    .steps{margin-top:38px}
+    .step{display:grid;grid-template-columns:45px 1fr;gap:15px;padding:21px 0;border-top:1px solid var(--line)}
+    .step:last-child{border-bottom:1px solid var(--line)}
+    .step-num{font-family:Manrope;font-weight:800;color:var(--accent-dark)}
+    .step h4{font-family:Manrope;font-size:18px;margin-bottom:5px}
+    .step p{font-size:13px;color:var(--muted);line-height:1.6}
+
+    .recovery{padding-top:0;background:#ecece5}
+    .recovery-banner{height:560px;border-radius:var(--radius);overflow:hidden;position:relative;color:#fff}
+    .recovery-banner img{object-position:center 60%}
+    .recovery-banner:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,8,.78),rgba(8,12,8,.08))}
+    .recovery-copy{position:absolute;z-index:2;left:6%;top:50%;transform:translateY(-50%);max-width:570px}
+    .recovery-copy .display{color:#fff;margin-bottom:24px}
+    .recovery-copy p{color:rgba(255,255,255,.75);line-height:1.65;max-width:470px}
+
+    .contact{
+      background:var(--ink);color:#fff;text-align:center;padding:135px 6vw;
+    }
+    .contact .section-label{color:#aabd86}
+    .contact .display{max-width:850px;margin:0 auto}
+    .contact-copy{color:rgba(255,255,255,.63);max-width:500px;margin:26px auto 0;line-height:1.65}
+    .contact-actions{display:flex;justify-content:center;gap:12px;margin-top:36px;flex-wrap:wrap}
+    .contact-small{margin-top:30px;font-size:11px;color:rgba(255,255,255,.38);letter-spacing:.08em}
+
+    footer{background:#0b0e0c;color:rgba(255,255,255,.5);padding:25px 6vw;font-size:11px}
+    .footer-in{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:20px}
+
+    .whatsapp{
+      position:fixed;right:24px;bottom:24px;z-index:60;
+      display:flex;align-items:center;gap:10px;padding:14px 18px 14px 15px;
+      border-radius:999px;background:#fff;color:var(--ink);
+      box-shadow:0 15px 40px rgba(0,0,0,.18);font-size:12px;font-weight:800;
+      transition:.25s;
+    }
+    .whatsapp:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.24)}
+    .wa-icon{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#9daf7e;color:#fff;font-size:16px}
+
+    .reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:850px){
+      .nav{top:10px;width:calc(100% - 20px);padding-left:17px}
+      .navlinks{display:none}
+      .navcta{padding:10px 14px}
+      .hero{padding:145px 22px 52px;min-height:88svh}
+      .hero-bg img{object-position:57% 25%}
+      .hero-copy{font-size:15px}
+      .hero-scroll{display:none}
+      section{padding:82px 22px}
+      .intro-grid,.about-grid,.method-grid{grid-template-columns:1fr;gap:35px}
+      .portrait{height:560px;transform:none}
+      .cards{grid-template-columns:1fr}
+      .card{min-height:390px}
+      .services-head{display:block}
+      .services-note{margin-top:20px}
+      .tech-image{height:500px}
+      .recovery{padding-top:0}
+      .recovery-banner{height:610px}
+      .recovery-copy{left:25px;right:25px;top:auto;bottom:32px;transform:none}
+      .facts{margin-top:28px}
+      .whatsapp{right:15px;bottom:15px}
+      .footer-in{display:block}
+      .footer-in div+div{margin-top:8px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <!--
+    CONFIGURAÇÃO:
+    Troque WHATSAPP_NUMERO pelo número da profissional, somente números,
+    com código do país. Ex.: 5516999999999
+  -->
+
+  <nav class="nav">
+    <a class="brand" href="#inicio">
+      ANA LAURA
+      <span>Fisioterapia Esportiva</span>
+    </a>
+    <div class="navlinks">
+      <a href="https://www.instagram.com/fisio.analauraperoni/" target="_blank" rel="noopener">@fisio.analauraperoni</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#metodo">Método</a>
+    </div>
+    <a class="navcta" href="#contato">Agendar atendimento</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-bg"><img src="assets/atendimento-01.jpg" alt="Ana Laura realizando atendimento de fisioterapia"></div>
+      <div class="hero-content reveal">
+        <div class="eyebrow">Araraquara · SP &nbsp; / &nbsp; @fisio.analauraperoni</div>
+        <h1>Seu corpo.<br>Seu próximo nível.</h1>
+        <p class="hero-copy">Fisioterapia esportiva, recovery e performance para quem quer se movimentar melhor, treinar com mais segurança e voltar mais forte.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#contato">Quero cuidar do meu corpo <span>↗</span></a>
+          <a class="btn btn-ghost" href="#sobre">Conheça meu trabalho</a>
+        </div>
+      </div>
+      <div class="hero-scroll">scroll para explorar ↓</div>
+    </section>
+
+    <section>
+      <div class="wrap intro-grid reveal">
+        <div>
+          <div class="section-label">01 / Uma fisioterapia diferente</div>
+          <h2 class="display">Não é só tratar uma dor.<br>É entender o movimento.</h2>
+        </div>
+        <div>
+          <p class="lead">Cada corpo tem uma história, uma rotina e um objetivo. O atendimento parte de uma avaliação individual para construir um caminho que faça sentido para você — seja voltar ao esporte, melhorar sua performance ou recuperar confiança no próprio corpo.</p>
+          <div class="quote">“Cuidar do corpo também é investir no que você ainda quer viver.”</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="sobre">
+      <div class="wrap about-grid">
+        <div class="portrait reveal">
+          <img src="assets/atendimento-02.jpg" alt="Ana Laura durante atendimento de fisioterapia">
+        </div>
+        <div class="about-copy reveal">
+          <div class="section-label">02 / Sobre mim</div>
+          <h2 class="display">Fisioterapia com olhar de atleta.</h2>
+          <p class="lead">Sou Ana Laura Peroni, fisioterapeuta esportiva e atleta amadora. Minha rotina dentro do esporte também influencia a forma como enxergo o cuidado: movimento, consistência, recuperação e performance caminham juntos.</p>
+          <p class="lead" style="margin-top:18px">Meu objetivo é transformar a fisioterapia em uma experiência próxima, estratégica e individualizada — respeitando o momento de cada pessoa e o que ela quer conquistar.</p>
+
+          <div class="facts">
+            <div class="fact"><strong>Esportiva</strong><span>Foco em quem se movimenta</span></div>
+            <div class="fact"><strong>Recovery</strong><span>Recuperação e cuidado</span></div>
+            <div class="fact"><strong>Performance</strong><span>Movimento com propósito</span></div>
+            <div class="fact"><strong>Individual</strong><span>Conduta para cada corpo</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="especialidades">
+      <div class="wrap">
+        <div class="services-head reveal">
+          <div>
+            <div class="section-label">03 / Especialidades</div>
+            <h2 class="display">Do primeiro atendimento<br>ao seu melhor movimento.</h2>
+          </div>
+          <p class="services-note">Um cuidado pensado para diferentes momentos: prevenir, recuperar, preparar e evoluir.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <img src="assets/atendimento-01.jpg" alt="Atendimento de fisioterapia esportiva">
+            <div class="card-body">
+              <div class="number">01</div>
+              <h3>Fisioterapia esportiva</h3>
+              <p>Avaliação e tratamento voltados para a rotina de quem treina, compete ou simplesmente ama se movimentar.</p>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <img src="assets/tecnologia.jpg" alt="Equipamento utilizado em atendimento">
+            <div class="card-body">
+              <div class="number">02</div>
+              <h3>Recovery</h3>
+              <p>Recursos e estratégias para recuperação, redução de sobrecarga e preparação para os próximos treinos.</p>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <img src="assets/recovery.jpg" alt="Equipamento de recovery esportivo">
+            <div class="card-body">
+              <div class="number">03</div>
+              <h3>Performance</h3>
+              <p>Um olhar para o movimento além da dor: eficiência, controle, prevenção e evolução do desempenho.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>MOVE BETTER</span><i>✦</i><span>RECOVER SMARTER</span><i>✦</i><span>PERFORM WITH CONFIDENCE</span><i>✦</i>
+        <span>MOVE BETTER</span><i>✦</i><span>RECOVER SMARTER</span><i>✦</i><span>PERFORM WITH CONFIDENCE</span><i>✦</i>
+      </div>
+    </div>
+
+    <section class="method" id="metodo">
+      <div class="wrap method-grid">
+        <div class="tech-image reveal">
+          <img src="assets/tecnologia.jpg" alt="Ana Laura utilizando equipamento durante atendimento">
+          <div class="floating-tag">Tecnologia + avaliação + cuidado</div>
+        </div>
+
+        <div class="reveal">
+          <div class="section-label">04 / Como funciona</div>
+          <h2 class="display">Um processo pensado em você.</h2>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div><h4>Avaliar</h4><p>Entender seu corpo, sua rotina, suas queixas e seus objetivos.</p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <div><h4>Planejar</h4><p>Definir uma estratégia de tratamento coerente com o seu momento.</p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <div><h4>Tratar</h4><p>Aplicar recursos e exercícios de forma individualizada e progressiva.</p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">04</div>
+              <div><h4>Evoluir</h4><p>Acompanhar sua resposta e ajustar o caminho conforme você avança.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recovery">
+      <div class="wrap">
+        <div class="recovery-banner reveal">
+          <img src="assets/recovery.jpg" alt="Recovery esportivo">
+          <div class="recovery-copy">
+            <div class="section-label">05 / Seu próximo passo</div>
+            <h2 class="display">Volte a fazer o que você ama.</h2>
+            <p>Não precisa esperar a dor limitar sua rotina. Converse comigo e descubra qual abordagem faz sentido para o seu momento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="wrap reveal">
+        <div class="section-label">06 / Vamos conversar</div>
+        <h2 class="display">Seu corpo está pedindo atenção?</h2>
+        <p class="contact-copy">Me chama no WhatsApp. A gente conversa sobre seu objetivo e encontra o melhor caminho para começar.</p>
+        <div class="contact-actions">
+          <a class="btn btn-light" data-whatsapp href="#">Agendar pelo WhatsApp ↗</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/fisio.analauraperoni/" target="_blank" rel="noopener">Seguir @fisio.analauraperoni ↗</a>
+        </div>
+        <div class="contact-small">ANA LAURA PERONI · FISIOTERAPIA ESPORTIVA · ARARAQUARA — SP<br><br>@fisio.analauraperoni</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-in">
+      <div>© 2026 Ana Laura Peroni</div>
+      <div>Fisioterapia Esportiva · Recovery · Performance · @fisio.analauraperoni</div>
+    </div>
+  </footer>
+
+  <a class="whatsapp" data-whatsapp href="#" aria-label="Agendar atendimento pelo WhatsApp">
+    <span class="wa-icon">↗</span>
+    <span>Falar no WhatsApp</span>
+  </a>
+
+  <script>
+    // ============================================================
+    // COLOQUE AQUI O NÚMERO REAL DO WHATSAPP DA CLIENTE.
+    // Formato: 5516999999999 (sem +, espaços ou parênteses)
+    // ============================================================
+    const WHATSAPP_NUMERO = "5516996245254";
+    const WHATSAPP_TEXTO = "Olá, gostaria de saber mais como funciona as sessões, por gentileza!";
+
+    document.querySelectorAll("[data-whatsapp]").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.open(
+          `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(WHATSAPP_TEXTO)}`,
+          "_blank"
+        );
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, {threshold:.12});
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
